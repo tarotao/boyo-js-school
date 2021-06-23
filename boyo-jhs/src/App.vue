@@ -1,32 +1,25 @@
 <template>
-  <div id="app">
-    <h3>送信フォーム</h3>
-    <label for="name">名前：</label>
-    <input 
-      v-model="name" 
-      id="name" 
-      type="text"
-    >
-    <br><br>
-    <label for="comment">コメント：</label>
-    <textarea  
-      v-model="comment" 
-      id="comment"
-    ></textarea>
-    <br><br>
-    <button @click="createComment">送信</button>
-    <h2>掲示板</h2>
-    <div v-for="post in posts" :key="post.name">
-      <div>名前：{{post.fields.name.stringValue}}</div>
-      <div>{{post.fields.comment.stringValue}}</div>
-      <hr>
-    </div>
-  </div>
+  <v-app>
+    <v-main>
+      <v-container>
+        <v-row>
+          <v-col>
+            <Bord/>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
 </template>
 
 <script>
 import axios from "axios";
+import Bord from './components/Bord'
+
 export default {
+  name: 'App',
+   components: {
+    Bord
+  },
   data() {
     return {
       name: "",
@@ -76,12 +69,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
